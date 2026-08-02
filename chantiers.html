@@ -182,8 +182,8 @@ body.lk{overflow:hidden}
 /* ---------- galerie : ratios uniformes, aucune déformation ---------- */
 .gal{display:flex;flex-wrap:wrap;gap:var(--s5) var(--s4)}
 .gal::after{content:'';flex-grow:999999}
-.gal figure{margin:0;flex:var(--r) 1 calc(var(--r) * 215px);min-width:0}
-.gal.g4 figure{flex-basis:calc(var(--r) * 185px)}
+.gal figure{margin:0;flex:var(--r) 1 calc(var(--r) * 330px);min-width:0}
+.gal.g4 figure{flex-basis:calc(var(--r) * 285px)}
 .gal .fr{position:relative;overflow:hidden;background:var(--pp-3);display:block;aspect-ratio:var(--r)}
 .gal .fr img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease)}
 .gal figure:hover .fr img{transform:scale(1.045)}
@@ -344,13 +344,26 @@ body.lk{overflow:hidden}
 .rv.in{opacity:1;transform:none}
 
 /* ---------- responsive ---------- */
+
+/* confort tactile général */
+@media(hover:none){
+  a,button{-webkit-tap-highlight-color:rgba(11,11,12,.08)}
+  .ms2 figure:hover img,.gal figure:hover img,.trio figure:hover img,
+  .duo figure:hover img{transform:none}
+}
+
+/* ————— grand ordinateur portable ————— */
 @media(max-width:1180px){
   .w{padding:0 var(--s6)}
   .hdr-in{padding:0 var(--s6)}
   .hero-in{padding:0 var(--s6) var(--s7)}
   .nv{gap:var(--s5)}
   .nv a{font-size:.86rem}
+  .gal figure{flex-basis:calc(var(--r) * 300px)}
+  .gal.g4 figure{flex-basis:calc(var(--r) * 265px)}
 }
+
+/* ————— tablette paysage : bascule sur le menu ————— */
 @media(max-width:1020px){
   .nv,.tl{display:none}
   .bg{display:block}
@@ -359,48 +372,149 @@ body.lk{overflow:hidden}
   .ix a{grid-template-columns:48px minmax(0,1fr);gap:0 var(--s5)}
   .ix .cl{grid-template-columns:1fr;gap:var(--s4)}
   .ix .side{padding-top:var(--s4);border-top:1px solid var(--ln)}
-  .gal figure{flex-basis:calc(var(--r) * 175px)}
-  .gal.g4 figure{flex-basis:calc(var(--r) * 160px)}
   .cta-in{grid-template-columns:1fr;gap:var(--s6)}
   .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
   .ft-g{grid-template-columns:1fr 1fr;gap:var(--s6)}
+  .ms2{grid-template-columns:1fr;gap:var(--s6)}
+  .ms2.rev>figure{order:0}
+  .gal figure{flex-basis:calc(var(--r) * 272px)}
+  .gal.g4 figure{flex-basis:calc(var(--r) * 248px)}
 }
-@media(max-width:720px){
-  body{font-size:16px}
-  .w{padding:0 var(--s5)}
-  .hdr-in{padding:0 var(--s5);height:68px}
-  .mm{padding:var(--s5)}
-  .mm-top{height:68px;margin-top:0;margin-bottom:var(--s6)}
+
+/* ————— tablette portrait ————— */
+@media(max-width:860px){
   .sc{padding:var(--s8) 0}
   .cta{padding:var(--s8) 0}
+  .duo{grid-template-columns:1fr;gap:var(--s7)}
+  .trio{grid-template-columns:1fr 1fr}
+  .trio figure:nth-child(3){display:none}
+  .gal figure,.gal.g4 figure{flex-basis:calc(var(--r) * 250px)}
+}
+
+/* ————— téléphone ————— */
+@media(max-width:720px){
+  html{scroll-padding-top:76px}
+  body{font-size:16px;padding-bottom:64px}          /* place pour la barre d'appel */
+  .w{padding:0 var(--s5)}
+  .wn{max-width:none}
+
+  /* en-tête compact */
+  .hdr-in{padding:0 var(--s5);height:64px}
+  .bd b{font-size:1.14rem}
+  .bd span{font-size:.6rem;letter-spacing:.14em}
+  .hdr-r{gap:var(--s3)}
+  .hdr-r .bt{display:none}                          /* le devis passe dans la barre basse */
+  .bg{padding:10px;margin-left:var(--s2)}
+
+  /* menu plein écran */
+  .mm{padding:var(--s5) var(--s5) calc(var(--s7) + env(safe-area-inset-bottom))}
+  .mm-top{height:64px;margin-top:0;margin-bottom:var(--s6)}
+  .mm a.ml{font-size:clamp(1.6rem,7.4vw,2.2rem);padding:var(--s4) 0}
+  .mm-ft{margin-top:var(--s6)}
+
+  /* héros */
   .hero{min-height:auto}
-  .hero-in{grid-template-columns:1fr;padding:calc(68px + var(--s8)) var(--s5) var(--s7);gap:var(--s6)}
-  .hero h1{max-width:none}
-  .hero-meta{text-align:left;display:flex;gap:var(--s6);flex-wrap:wrap}
-  .hero-meta div+div{margin-top:0}
-  .hero-ac{flex-direction:column}
+  .hero-in{grid-template-columns:1fr;padding:calc(64px + var(--s7)) var(--s5) var(--s7);gap:var(--s6)}
+  .hero h1{max-width:none;font-size:clamp(2rem,8.4vw,2.6rem)}
+  .hero .ld{font-size:1rem;margin-bottom:var(--s5)}
+  .hero-ac{flex-direction:column;gap:var(--s3)}
   .hero-ac .bt{width:100%}
-  .ph{padding:calc(68px + var(--s7)) 0 var(--s7)}
-  .ph-ac{flex-direction:column}
+  .hero-meta{text-align:left;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);
+    padding-top:var(--s5);border-top:1px solid rgba(255,255,255,.18);white-space:normal}
+  .hero-meta div+div{margin-top:0}
+  .hero-meta b{font-size:1.24rem}
+  .hero-meta div{font-size:.76rem;line-height:1.35}
+
+  /* bannières internes */
+  .ph{padding:calc(64px + var(--s6)) 0 var(--s6)}
+  .ph.tall{min-height:auto;padding-bottom:var(--s6);display:block}
+  .ph h1{font-size:clamp(1.8rem,7.6vw,2.4rem)}
+  .ph p{font-size:1rem}
+  .ph-ac{flex-direction:column;gap:var(--s3)}
   .ph-ac .bt{width:100%}
-  .gal{gap:var(--s4) var(--s3)}
-  .gal figure,.gal.g4 figure{flex-basis:calc(var(--r) * 118px)}
-  .duo{grid-template-columns:1fr;gap:var(--s6)}
-  .gal figcaption{flex-direction:column;gap:2px}
-  .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
-  .ix a{grid-template-columns:1fr;gap:var(--s3);padding:var(--s5) var(--s3);margin:0 calc(var(--s3) * -1)}
+  .ph-bg img{opacity:.42}
+
+  /* titres de section */
+  .hd1,.hd2{margin-bottom:var(--s6)}
+  h2{font-size:clamp(1.6rem,6.4vw,2.1rem)}
+  .lead{font-size:1.1rem}
+
+  /* galerie : une ou deux par rangée, jamais de timbre-poste */
+  .gal{gap:var(--s5) var(--s3)}
+  .gal figure,.gal.g4 figure{flex-basis:calc(var(--r) * 260px)}
+  .gal figcaption{flex-direction:column;gap:2px;align-items:flex-start}
+  .yr{margin:var(--s6) 0 var(--s5)}
+  .yr b{font-size:1.3rem}
+
+  /* triptyque : une seule photo, format large */
+  .trio{grid-template-columns:1fr;gap:1px}
+  .trio figure{aspect-ratio:16/10}
+  .trio figure:nth-child(3){display:block}
+  .trio figcaption{padding:var(--s5) var(--s4) var(--s4)}
+
+  /* index de prestations */
+  .ix a{grid-template-columns:1fr;gap:var(--s3);padding:var(--s5) var(--s3);
+    margin:0 calc(var(--s3) * -1)}
   .ix .no{grid-row:auto;grid-column:1;padding-top:0}
   .ix .tt,.ix .cl{grid-column:1}
+  .ix .tt{margin-bottom:var(--s3);padding-bottom:var(--s3)}
   .ix .ar{display:none}
+
+  /* chiffres et tableaux */
+  .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
+  .fig b{font-size:2.1rem}
+  .dt td{padding:var(--s3) var(--s4) var(--s3) 0}
+  .dt td:first-child{width:42%}
+  .dt{font-size:.94rem}
+
+  /* formulaire */
   .fm{padding:var(--s5)}
   .fr2{grid-template-columns:1fr;gap:0}
-  .ft-g{grid-template-columns:1fr;gap:var(--s6)}
-  .dt td:first-child{width:44%}
+  .fl input,.fl select,.fl textarea{font-size:16px}   /* évite le zoom automatique iOS */
+
+  /* média */
+  .mw{margin:var(--s6) 0}
+  .ms2{gap:var(--s5)}
+
+  /* pied de page */
+  .ft{padding:var(--s7) 0 var(--s4)}
+  .ft-g{grid-template-columns:1fr;gap:var(--s6);padding-bottom:var(--s6)}
+  .ft a{padding:5px 0;margin-bottom:var(--s2)}        /* cibles tactiles */
+  .ft-b{flex-direction:column;gap:var(--s2);font-size:.78rem}
+
+  /* barre d'appel permanente */
+  .dock{display:grid}
 }
-@media(max-width:420px){
-  .gal figure,.gal.g4 figure{flex-basis:100%;flex-grow:1}
+
+/* ————— petit téléphone ————— */
+@media(max-width:400px){
+  .w{padding:0 var(--s4)}
+  .hdr-in{padding:0 var(--s4)}
+  .bd b{font-size:1.05rem}
+  .bd span{display:none}
+  .hero-in{padding:calc(64px + var(--s6)) var(--s4) var(--s6)}
+  .hero h1{font-size:1.92rem}
+  .hero-meta{grid-template-columns:1fr 1fr}
+  .hero-meta div:last-child{grid-column:1/3}
   .fig{grid-template-columns:1fr}
+  .gal figure,.gal.g4 figure{flex-basis:100%;flex-grow:1}
+  .trio figure{aspect-ratio:4/3}
+  .dt td:first-child{width:46%}
+  .lead{font-size:1.04rem}
 }
+
+/* ————— barre d'appel bas d'écran ————— */
+.dock{display:none;position:fixed;left:0;right:0;bottom:0;z-index:80;
+  grid-template-columns:1fr 1fr;
+  background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(12px);
+  border-top:1px solid var(--ln);
+  padding-bottom:env(safe-area-inset-bottom)}
+.dock a{display:flex;align-items:center;justify-content:center;gap:9px;min-height:56px;
+  font-size:.95rem;font-weight:600;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.dock a+a{background:var(--ink);color:#fff}
+.dock a:active{opacity:.72}
+.dock svg{flex-shrink:0}
+
 @media print{
   .hdr,.mm,.skip,.fm,.cta .fm,.ft-g,.gal .fr,.trio,.hero-img,.hero-sc,.ph-bg{display:none!important}
   body{font-size:11pt;color:#000;background:#fff}
@@ -578,6 +692,12 @@ body.lk{overflow:hidden}
 <div class="ft-b"><span>© AJJY Concept — Tous droits réservés</span>
 <span>Entreprise qualifiée RGE · Vaillant &amp; Saunier Duval</span></div>
 </div></footer>
+<nav class="dock" aria-label="Contact rapide">
+<a href="tel:0484891586">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg>
+  Appeler</a>
+<a href="contact.html">Devis gratuit</a>
+</nav>
 
 <script>document.documentElement.classList.remove('no-js');</script>
 <script>
