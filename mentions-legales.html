@@ -15,9 +15,9 @@
 <meta property="og:title" content="Mentions légales | AJJY Services">
 <meta property="og:description" content="Mentions légales et politique de confidentialité du site AJJY Services, équipe de maintenance d'AJJY Concept.">
 <meta property="og:url" content="https://www.ajjyconcept.com/mentions-legales.html">
-<meta property="og:image" content="https://www.ajjyconcept.com/images/20250313-pompe-a-chaleur-vaillant-800.jpg">
-<meta property="og:image:width" content="800">
-<meta property="og:image:height" content="600">
+<meta property="og:image" content="https://www.ajjyconcept.com/images/20250313-pompe-a-chaleur-vaillant-600.jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="800">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="font" type="font/woff2" href="fonts/Manrope-400.woff2" crossorigin>
@@ -68,9 +68,8 @@ b,strong{color:var(--ink);font-weight:600}
 /* ---------- en-tête minimal ---------- */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:90;transition:background-color .4s var(--ease),
   border-color .4s var(--ease),backdrop-filter .4s}
-.hdr::after{content:'';position:absolute;inset:0;bottom:auto;height:1px;background:transparent;transition:background-color .4s}
-.hdr.solid{background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(14px)}
-.hdr.solid::after{background:var(--ln)}
+.hdr{border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(14px);border-bottom-color:var(--ln)}
 .hdr-in{max-width:1320px;margin:0 auto;padding:0 var(--s7);display:flex;align-items:center;
   justify-content:space-between;gap:var(--s6);height:82px}
 .bd{display:flex;flex-direction:column;line-height:1;flex-shrink:0}
@@ -146,7 +145,14 @@ body.lk{overflow:hidden}
 .hero-meta div+div{margin-top:var(--s5)}
 
 /* ouverture de page interne */
-.ph{background:var(--ink);color:rgba(255,255,255,.7);padding:calc(82px + var(--s9)) 0 var(--s8)}
+.ph{background:var(--ink);color:rgba(255,255,255,.7);padding:calc(82px + var(--s9)) 0 var(--s8);
+  position:relative;overflow:hidden;isolation:isolate}
+.ph-bg{position:absolute;inset:0;z-index:0}
+.ph-bg img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.ph-bg::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(100deg,rgba(11,11,12,.96) 0%,rgba(11,11,12,.86) 42%,rgba(11,11,12,.52) 78%,rgba(11,11,12,.62) 100%)}
+.ph .w{position:relative;z-index:1}
+.ph.tall{padding-bottom:var(--s9);min-height:min(60vh,560px);display:flex;align-items:flex-end}
 .ph .bcr{font-size:.78rem;color:rgba(255,255,255,.42);margin-bottom:var(--s5);letter-spacing:.02em}
 .ph .bcr a{color:rgba(255,255,255,.68)}
 .ph .bcr a:hover{color:#fff}
@@ -168,11 +174,11 @@ body.lk{overflow:hidden}
 .hd1 p{font-size:1.06rem;margin-top:var(--s4)}
 
 /* ---------- galerie : ratios uniformes, aucune déformation ---------- */
-.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5) var(--s4)}
-.gal.g4{grid-template-columns:repeat(4,1fr)}
-.gal figure{margin:0}
-.gal .fr{position:relative;overflow:hidden;background:var(--pp-3);aspect-ratio:4/3}
-.gal .fr img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.gal{columns:3;column-gap:var(--s4)}
+.gal.g4{columns:4}
+.gal figure{margin:0 0 var(--s6);break-inside:avoid;-webkit-column-break-inside:avoid}
+.gal .fr{position:relative;overflow:hidden;background:var(--pp-3);display:block}
+.gal .fr img{width:100%;height:auto;display:block;transition:transform 1.1s var(--ease)}
 .gal figure:hover .fr img{transform:scale(1.045)}
 .gal figcaption{padding-top:var(--s3);display:flex;justify-content:space-between;gap:var(--s4);
   align-items:baseline;border-top:1px solid var(--ln);margin-top:var(--s3)}
@@ -282,6 +288,17 @@ body.lk{overflow:hidden}
 .dn h3{margin-bottom:var(--s3)}
 
 /* ---------- appel à l'action final ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:start}
+.duo figure{margin:0}
+.duo .fr{display:block;overflow:hidden;background:var(--pp-3)}
+.duo .fr img{width:100%;height:auto;display:block;transition:transform 1.1s var(--ease)}
+.duo figure:hover .fr img{transform:scale(1.04)}
+.duo figcaption{padding-top:var(--s3);margin-top:var(--s3);border-top:1px solid var(--ln);
+  display:flex;justify-content:space-between;gap:var(--s4);align-items:baseline}
+.duo figcaption b{font-size:1.02rem;font-weight:600;color:var(--ink);letter-spacing:-.012em}
+.duo figcaption span{font-size:.8rem;color:var(--gr);white-space:nowrap}
+.duo p{font-size:.96rem;margin-top:var(--s3)}
+
 .cta{padding:var(--s10) 0}
 .cta-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:var(--s8);align-items:center}
 .cta h2{max-width:13ch}
@@ -326,7 +343,7 @@ body.lk{overflow:hidden}
   .hd2 h2{max-width:20ch}
   .ix a{grid-template-columns:44px minmax(0,1fr) 30px;gap:var(--s5)}
   .ix .side{grid-column:2;padding-top:var(--s3);border-top:1px solid var(--ln);margin-top:var(--s3)}
-  .gal.g4{grid-template-columns:repeat(3,1fr)}
+  .gal.g4{columns:3}
   .cta-in{grid-template-columns:1fr;gap:var(--s6)}
   .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
   .ft-g{grid-template-columns:1fr 1fr;gap:var(--s6)}
@@ -349,7 +366,9 @@ body.lk{overflow:hidden}
   .ph{padding:calc(68px + var(--s7)) 0 var(--s7)}
   .ph-ac{flex-direction:column}
   .ph-ac .bt{width:100%}
-  .gal,.gal.g4{grid-template-columns:1fr 1fr;gap:var(--s5) var(--s3)}
+  .gal,.gal.g4{columns:2;column-gap:var(--s3)}
+  .gal figure{margin-bottom:var(--s5)}
+  .duo{grid-template-columns:1fr;gap:var(--s6)}
   .gal figcaption{flex-direction:column;gap:2px}
   .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
   .ix a{grid-template-columns:36px minmax(0,1fr);gap:var(--s4)}
@@ -360,7 +379,7 @@ body.lk{overflow:hidden}
   .dt td:first-child{width:44%}
 }
 @media(max-width:420px){
-  .gal,.gal.g4{grid-template-columns:1fr}
+  .gal,.gal.g4{columns:1}
   .fig{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
@@ -395,7 +414,6 @@ body.lk{overflow:hidden}
 <nav class="bcr" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a> <span aria-hidden="true">/</span> Mentions légales</nav>
 <h1>Mentions légales</h1><p>Informations relatives à l'éditeur du site et au traitement des données personnelles.</p><div class="ph-ac"><a class="bt bt-lt bt-lg" href="contact.html">Demander un devis</a><a class="bt bt-lnw bt-lg" href="tel:0484891586">04 84 89 15 86</a></div>
 </div></section>
-
 <section class="sc"><div class="w wn tx">
 <p class="lead">AJJY Services est la marque de service du pôle maintenance d'AJJY Concept.</p>
 <table class="dt"><caption>Éditeur du site</caption><tbody><tr><td>Raison sociale</td><td>AJJY Concept</td></tr><tr><td>Marque de service</td><td>AJJY Services</td></tr><tr><td>Adresse</td><td>8 ZAC de la Haute Bedoule, 13240 Septèmes-les-Vallons</td></tr><tr><td>SIRET</td><td>531 647 618 00028</td></tr><tr><td>Téléphone</td><td><a href="tel:0484891586">04 84 89 15 86</a> — <a href="tel:0491095580">04 91 09 55 80</a></td></tr><tr><td>Horaires</td><td>Du lundi au vendredi, 8h à 18h non-stop</td></tr></tbody></table><div class="nb"><span class="kk">À compléter avant mise en ligne</span><p>Les éléments suivants ne figurent pas sur le site actuel et doivent être fournis par l'entreprise : forme juridique et capital social, numéro RCS, numéro de TVA intracommunautaire, nom du directeur de la publication, coordonnées de l'hébergeur, références des assurances de responsabilité civile professionnelle et de garantie décennale, numéro de qualification RGE, coordonnées du médiateur de la consommation et adresse e-mail de contact.</p></div><h2>Activité</h2><p>AJJY Services assure l'entretien, la réparation et le dépannage d'installations de chauffage, de climatisation et de production d'eau chaude sanitaire : pompes à chaleur, chaudières, poêles et inserts.</p><p>L'entreprise installe également des systèmes de chauffage écologiques et économes en énergie, notamment des pompes à chaleur air-eau et des chaudières à condensation, et accompagne ses clients dans leurs démarches d'obtention de MaPrimeRénov'. Elle est qualifiée RGE.</p><h2>Données personnelles</h2><h3>Finalité</h3><p>Les informations transmises au moyen des formulaires de ce site sont collectées dans un seul but : traiter votre demande de devis, de rendez-vous ou d'intervention. Elles ne font l'objet d'aucune cession à des tiers ni d'aucune utilisation publicitaire.</p><h3>Informations collectées</h3><ul><li>nom et prénom ;</li><li>numéro de téléphone ;</li><li>adresse e-mail, si vous choisissez de la renseigner ;</li><li>commune ;</li><li>objet de la demande et précisions ajoutées librement.</li></ul><h3>Conservation</h3><p>Les données sont conservées le temps nécessaire au traitement de votre demande, puis pendant la durée de la relation commerciale. Vous pouvez en demander la suppression à tout moment.</p><h3>Vos droits</h3><p>Conformément au règlement européen 2016/679, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données. Ces droits s'exercent auprès de l'entreprise, par courrier à l'adresse ci-dessus ou par téléphone. Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a>.</p><h2>Cookies</h2><p>Ce site ne dépose aucun cookie publicitaire et ne pratique aucun suivi entre sites. Les polices de caractères sont hébergées sur le serveur du site : aucune requête n'est adressée à un service tiers pendant la navigation.</p><h2>Propriété intellectuelle</h2><p>L'ensemble des éléments composant ce site, notamment sa structure, ses textes et les photographies de chantiers, est protégé au titre de la propriété intellectuelle. Toute reproduction ou représentation, totale ou partielle, sans autorisation écrite préalable, est interdite.</p><p>Les marques Vaillant, Saunier Duval, Agilia et Doris sont citées en tant que fabricants des équipements sur lesquels l'entreprise intervient. Elles demeurent la propriété de leurs détenteurs respectifs.</p><h2>Responsabilité</h2><p>Les informations publiées sur ce site sont fournies à titre indicatif et n'ont pas valeur contractuelle. Seul le devis accepté par le client détermine la nature, l'étendue et le prix des prestations.</p><p>Les indications techniques figurant sur ce site sont d'ordre général et ne se substituent pas au diagnostic d'un professionnel sur votre installation. Toute intervention sur un circuit contenant des fluides frigorigènes relève exclusivement d'un professionnel habilité.</p>

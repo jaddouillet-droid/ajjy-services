@@ -15,9 +15,9 @@
 <meta property="og:title" content="Installation de pompe à chaleur et de chaudière | AJJY Services">
 <meta property="og:description" content="Installation de pompes à chaleur air-eau et de chaudières à condensation Vaillant et Saunier Duval dans les Bouches-du-Rhône. Étude thermique préalable, devis gratuit.">
 <meta property="og:url" content="https://www.ajjyconcept.com/installation.html">
-<meta property="og:image" content="https://www.ajjyconcept.com/images/20250313-pompe-a-chaleur-vaillant-800.jpg">
-<meta property="og:image:width" content="800">
-<meta property="og:image:height" content="600">
+<meta property="og:image" content="https://www.ajjyconcept.com/images/20250313-pompe-a-chaleur-vaillant-600.jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="800">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="font" type="font/woff2" href="fonts/Manrope-400.woff2" crossorigin>
@@ -68,9 +68,8 @@ b,strong{color:var(--ink);font-weight:600}
 /* ---------- en-tête minimal ---------- */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:90;transition:background-color .4s var(--ease),
   border-color .4s var(--ease),backdrop-filter .4s}
-.hdr::after{content:'';position:absolute;inset:0;bottom:auto;height:1px;background:transparent;transition:background-color .4s}
-.hdr.solid{background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(14px)}
-.hdr.solid::after{background:var(--ln)}
+.hdr{border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(14px);border-bottom-color:var(--ln)}
 .hdr-in{max-width:1320px;margin:0 auto;padding:0 var(--s7);display:flex;align-items:center;
   justify-content:space-between;gap:var(--s6);height:82px}
 .bd{display:flex;flex-direction:column;line-height:1;flex-shrink:0}
@@ -146,7 +145,14 @@ body.lk{overflow:hidden}
 .hero-meta div+div{margin-top:var(--s5)}
 
 /* ouverture de page interne */
-.ph{background:var(--ink);color:rgba(255,255,255,.7);padding:calc(82px + var(--s9)) 0 var(--s8)}
+.ph{background:var(--ink);color:rgba(255,255,255,.7);padding:calc(82px + var(--s9)) 0 var(--s8);
+  position:relative;overflow:hidden;isolation:isolate}
+.ph-bg{position:absolute;inset:0;z-index:0}
+.ph-bg img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.ph-bg::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(100deg,rgba(11,11,12,.96) 0%,rgba(11,11,12,.86) 42%,rgba(11,11,12,.52) 78%,rgba(11,11,12,.62) 100%)}
+.ph .w{position:relative;z-index:1}
+.ph.tall{padding-bottom:var(--s9);min-height:min(60vh,560px);display:flex;align-items:flex-end}
 .ph .bcr{font-size:.78rem;color:rgba(255,255,255,.42);margin-bottom:var(--s5);letter-spacing:.02em}
 .ph .bcr a{color:rgba(255,255,255,.68)}
 .ph .bcr a:hover{color:#fff}
@@ -168,11 +174,11 @@ body.lk{overflow:hidden}
 .hd1 p{font-size:1.06rem;margin-top:var(--s4)}
 
 /* ---------- galerie : ratios uniformes, aucune déformation ---------- */
-.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5) var(--s4)}
-.gal.g4{grid-template-columns:repeat(4,1fr)}
-.gal figure{margin:0}
-.gal .fr{position:relative;overflow:hidden;background:var(--pp-3);aspect-ratio:4/3}
-.gal .fr img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.gal{columns:3;column-gap:var(--s4)}
+.gal.g4{columns:4}
+.gal figure{margin:0 0 var(--s6);break-inside:avoid;-webkit-column-break-inside:avoid}
+.gal .fr{position:relative;overflow:hidden;background:var(--pp-3);display:block}
+.gal .fr img{width:100%;height:auto;display:block;transition:transform 1.1s var(--ease)}
 .gal figure:hover .fr img{transform:scale(1.045)}
 .gal figcaption{padding-top:var(--s3);display:flex;justify-content:space-between;gap:var(--s4);
   align-items:baseline;border-top:1px solid var(--ln);margin-top:var(--s3)}
@@ -282,6 +288,17 @@ body.lk{overflow:hidden}
 .dn h3{margin-bottom:var(--s3)}
 
 /* ---------- appel à l'action final ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:start}
+.duo figure{margin:0}
+.duo .fr{display:block;overflow:hidden;background:var(--pp-3)}
+.duo .fr img{width:100%;height:auto;display:block;transition:transform 1.1s var(--ease)}
+.duo figure:hover .fr img{transform:scale(1.04)}
+.duo figcaption{padding-top:var(--s3);margin-top:var(--s3);border-top:1px solid var(--ln);
+  display:flex;justify-content:space-between;gap:var(--s4);align-items:baseline}
+.duo figcaption b{font-size:1.02rem;font-weight:600;color:var(--ink);letter-spacing:-.012em}
+.duo figcaption span{font-size:.8rem;color:var(--gr);white-space:nowrap}
+.duo p{font-size:.96rem;margin-top:var(--s3)}
+
 .cta{padding:var(--s10) 0}
 .cta-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:var(--s8);align-items:center}
 .cta h2{max-width:13ch}
@@ -326,7 +343,7 @@ body.lk{overflow:hidden}
   .hd2 h2{max-width:20ch}
   .ix a{grid-template-columns:44px minmax(0,1fr) 30px;gap:var(--s5)}
   .ix .side{grid-column:2;padding-top:var(--s3);border-top:1px solid var(--ln);margin-top:var(--s3)}
-  .gal.g4{grid-template-columns:repeat(3,1fr)}
+  .gal.g4{columns:3}
   .cta-in{grid-template-columns:1fr;gap:var(--s6)}
   .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
   .ft-g{grid-template-columns:1fr 1fr;gap:var(--s6)}
@@ -349,7 +366,9 @@ body.lk{overflow:hidden}
   .ph{padding:calc(68px + var(--s7)) 0 var(--s7)}
   .ph-ac{flex-direction:column}
   .ph-ac .bt{width:100%}
-  .gal,.gal.g4{grid-template-columns:1fr 1fr;gap:var(--s5) var(--s3)}
+  .gal,.gal.g4{columns:2;column-gap:var(--s3)}
+  .gal figure{margin-bottom:var(--s5)}
+  .duo{grid-template-columns:1fr;gap:var(--s6)}
   .gal figcaption{flex-direction:column;gap:2px}
   .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
   .ix a{grid-template-columns:36px minmax(0,1fr);gap:var(--s4)}
@@ -360,7 +379,7 @@ body.lk{overflow:hidden}
   .dt td:first-child{width:44%}
 }
 @media(max-width:420px){
-  .gal,.gal.g4{grid-template-columns:1fr}
+  .gal,.gal.g4{columns:1}
   .fig{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
@@ -391,14 +410,13 @@ body.lk{overflow:hidden}
 </div>
 <main>
 
-<section class="ph"><div class="w">
+<section class="ph tall"><div class="ph-bg"><img src="images/20241114-pompe-a-chaleur-vaillant-800.jpg" srcset="images/20241114-pompe-a-chaleur-vaillant-420.jpg 400w, images/20241114-pompe-a-chaleur-vaillant-800.jpg 800w" sizes="100vw" alt="" width="800" height="600" fetchpriority="high"></div><div class="w">
 <nav class="bcr" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a> <span aria-hidden="true">/</span> Installation</nav>
 <h1>Installation et remplacement</h1><p>Nous sommes spécialisés dans l'installation de systèmes de chauffage écologiques et économes en énergie, tels que les pompes à chaleur air-eau et les chaudières à condensation.</p><div class="ph-ac"><a class="bt bt-lt bt-lg" href="contact.html">Demander un devis</a><a class="bt bt-lnw bt-lg" href="tel:0484891586">04 84 89 15 86</a></div>
 </div></section>
-<div class="w" style="margin-top:calc(var(--s8) * -1);position:relative;z-index:2"><div class="rv"><img src="images/20241114-pompe-a-chaleur-vaillant-800.jpg" srcset="images/20241114-pompe-a-chaleur-vaillant-400.jpg 400w, images/20241114-pompe-a-chaleur-vaillant-800.jpg 800w" sizes="100vw" alt="Installation et remplacement" width="800" height="600" loading="lazy" decoding="async"></div></div>
 <section class="sc"><div class="w wn tx">
 <p class="lead">AJJY Services est un spécialiste des systèmes de chauffage à énergie propre. Nous sommes qualifiés RGE et mettons nos services à la disposition des professionnels et des particuliers.</p>
-<h2>Ce que nous installons</h2><ul><li>les pompes à chaleur air-eau, avec module ;</li><li>les chaudières gaz à condensation ;</li><li>les systèmes de climatisation ;</li><li>les équipements de production d'eau chaude sanitaire, dont les chauffe-eau électriques ;</li><li>les émetteurs : radiateurs, sèche-serviettes, plancher chauffant.</li></ul><p>Nous travaillons avec les marques les plus fiables et les plus innovantes du marché, telles que Vaillant et Saunier Duval, pour offrir à nos clients des solutions de chauffage performantes et durables.</p><figure class="rv"><img src="images/photo-reception-chantier-800.jpg" srcset="images/photo-reception-chantier-400.jpg 400w, images/photo-reception-chantier-800.jpg 800w" sizes="(max-width:720px) 100vw, 780px" alt="Réception d'un chantier par notre équipe" width="800" height="600" loading="lazy" decoding="async"><figcaption>Réception d'un chantier par notre équipe</figcaption></figure><div class="nb"><span class="kk">Étude préalable</span><p>Nos équipes s'engagent à réaliser en amont une étude thermique afin de garantir la transparence et l'objectivité du devis. Celui-ci vous est proposé gratuitement et sans engagement.</p></div><h2>Vos aides financières</h2><p>Les travaux de chauffage peuvent être coûteux. C'est pourquoi nous aidons nos clients à bénéficier des aides gouvernementales disponibles pour changer leur système de chauffage.</p><p>Nous sommes spécialisés dans l'accompagnement des clients pour l'obtention de MaPrimeRénov', aide financière proposée par l'État pour aider les propriétaires à rénover leur logement. Nous guidons nos clients à chaque étape du processus, de la demande d'aide à l'installation du nouveau système de chauffage.</p><p>Certains de nos clients sont suivis par des structures d'accompagnement à la rénovation énergétique. C'est le cas d'un chantier mené à Ollières, réalisé en réponse aux recommandations de SOLIHA.</p><h2>Un exemple de rénovation</h2><p>À Ollières, près de Saint-Maximin-la-Sainte-Baume, nous sommes intervenus pour remplacer le chauffe-eau existant par un modèle plat vertical, poser trois radiateurs électriques à double corps de chauffe et installer un sèche-serviettes dans la salle d'eau. Le chantier a été réalisé en une journée par deux de nos techniciens. <a href="realisation-ollieres-renovation-chauffage-eau-chaude.html">Lire le détail</a>.</p><h2>Après la pose</h2><p>Nous considérons que la maintenance de nos installations est aussi importante que leur pose initiale. Nous restons disponibles pour toute réparation ou dépannage ultérieur. <a href="entretien.html">Voir l'entretien</a> — <a href="depannage.html">voir le dépannage</a>.</p>
+<h2>Ce que nous installons</h2><ul><li>les pompes à chaleur air-eau, avec module ;</li><li>les chaudières gaz à condensation ;</li><li>les systèmes de climatisation ;</li><li>les équipements de production d'eau chaude sanitaire, dont les chauffe-eau électriques ;</li><li>les émetteurs : radiateurs, sèche-serviettes, plancher chauffant.</li></ul><p>Nous travaillons avec les marques les plus fiables et les plus innovantes du marché, telles que Vaillant et Saunier Duval, pour offrir à nos clients des solutions de chauffage performantes et durables.</p><figure class="rv"><img src="images/photo-reception-chantier-800.jpg" srcset="images/photo-reception-chantier-420.jpg 400w, images/photo-reception-chantier-800.jpg 800w" sizes="(max-width:720px) 100vw, 780px" alt="Réception d'un chantier par notre équipe" width="800" height="600" loading="lazy" decoding="async"><figcaption>Réception d'un chantier par notre équipe</figcaption></figure><div class="nb"><span class="kk">Étude préalable</span><p>Nos équipes s'engagent à réaliser en amont une étude thermique afin de garantir la transparence et l'objectivité du devis. Celui-ci vous est proposé gratuitement et sans engagement.</p></div><h2>Vos aides financières</h2><p>Les travaux de chauffage peuvent être coûteux. C'est pourquoi nous aidons nos clients à bénéficier des aides gouvernementales disponibles pour changer leur système de chauffage.</p><p>Nous sommes spécialisés dans l'accompagnement des clients pour l'obtention de MaPrimeRénov', aide financière proposée par l'État pour aider les propriétaires à rénover leur logement. Nous guidons nos clients à chaque étape du processus, de la demande d'aide à l'installation du nouveau système de chauffage.</p><p>Certains de nos clients sont suivis par des structures d'accompagnement à la rénovation énergétique. C'est le cas d'un chantier mené à Ollières, réalisé en réponse aux recommandations de SOLIHA.</p><h2>Un exemple de rénovation</h2><p>À Ollières, près de Saint-Maximin-la-Sainte-Baume, nous sommes intervenus pour remplacer le chauffe-eau existant par un modèle plat vertical, poser trois radiateurs électriques à double corps de chauffe et installer un sèche-serviettes dans la salle d'eau. Le chantier a été réalisé en une journée par deux de nos techniciens. <a href="realisation-ollieres-renovation-chauffage-eau-chaude.html">Lire le détail</a>.</p><h2>Après la pose</h2><p>Nous considérons que la maintenance de nos installations est aussi importante que leur pose initiale. Nous restons disponibles pour toute réparation ou dépannage ultérieur. <a href="entretien.html">Voir l'entretien</a> — <a href="depannage.html">voir le dépannage</a>.</p>
 
 </div></section>
 <section class="sc-dk cta"><div class="w cta-in">
