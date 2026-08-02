@@ -398,6 +398,52 @@ body.lk{overflow:hidden}
   .rv{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+/* ---------- blocs média ---------- */
+.mw{margin:var(--s8) 0}
+.mw .fr{display:block;background:var(--pp-3);overflow:hidden}
+.mw img{width:100%;height:auto;display:block}
+.mw figcaption{display:flex;justify-content:space-between;gap:var(--s5);align-items:baseline;
+  padding-top:var(--s3);margin-top:var(--s3);border-top:1px solid var(--ln)}
+.mw figcaption b{font-size:.96rem;font-weight:600;color:var(--ink);letter-spacing:-.012em}
+.mw figcaption span{font-size:.82rem;color:var(--gr);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sc-dk .mw figcaption{border-top-color:rgba(255,255,255,.16)}
+.sc-dk .mw figcaption b{color:#fff}
+.sc-dk .mw figcaption span{color:rgba(255,255,255,.5)}
+
+.ms2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:center}
+.ms2.rev>figure{order:2}
+.ms2 figure{margin:0}
+.ms2 .fr{display:block;overflow:hidden;background:var(--pp-3)}
+.ms2 img{width:100%;height:auto;display:block;transition:transform 1.1s var(--ease)}
+.ms2 figure:hover img{transform:scale(1.035)}
+.ms2 figcaption{padding-top:var(--s3);margin-top:var(--s3);border-top:1px solid var(--ln);
+  font-size:.86rem;color:var(--gr)}
+.ms2 .cnt h3{margin-bottom:var(--s4)}
+.ms2 .cnt p{font-size:1rem;margin-bottom:var(--s3)}
+.ms2 .cnt ul{margin:var(--s4) 0 0}
+.ms2 .cnt ul li{position:relative;padding-left:var(--s5);margin-bottom:var(--s3);font-size:.97rem}
+.ms2 .cnt ul li::before{content:'';position:absolute;left:0;top:13px;width:8px;height:1px;background:var(--ink)}
+
+/* triptyque photo pleine largeur */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ln)}
+.trio figure{margin:0;position:relative;overflow:hidden;background:var(--pp-3);aspect-ratio:1/1}
+.trio img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.trio figure:hover img{transform:scale(1.05)}
+.trio figcaption{position:absolute;left:0;right:0;bottom:0;padding:var(--s4);
+  background:linear-gradient(to top,rgba(11,11,12,.88),transparent);color:#fff;font-size:.84rem}
+.trio figcaption b{display:block;font-weight:600;font-size:.94rem;margin-bottom:2px}
+.trio figcaption span{color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums}
+
+@media(max-width:1020px){
+  .ms2{grid-template-columns:1fr;gap:var(--s6)}
+  .ms2.rev>figure{order:0}
+}
+@media(max-width:720px){
+  .trio{grid-template-columns:1fr;gap:1px}
+  .trio figure{aspect-ratio:4/3}
+  .mw{margin:var(--s7) 0}
+}
 </style>
 </head>
 <body>
@@ -427,7 +473,7 @@ body.lk{overflow:hidden}
 </div></section>
 <section class="sc"><div class="w wn tx">
 <p class="lead">AJJY Services est un spécialiste des systèmes de chauffage à énergie propre. Nous sommes qualifiés RGE et mettons nos services à la disposition des professionnels et des particuliers.</p>
-<h2>Ce que nous installons</h2><ul><li>les pompes à chaleur air-eau, avec module ;</li><li>les chaudières gaz à condensation ;</li><li>les systèmes de climatisation ;</li><li>les équipements de production d'eau chaude sanitaire, dont les chauffe-eau électriques ;</li><li>les émetteurs : radiateurs, sèche-serviettes, plancher chauffant.</li></ul><p>Nous travaillons avec les marques les plus fiables et les plus innovantes du marché, telles que Vaillant et Saunier Duval, pour offrir à nos clients des solutions de chauffage performantes et durables.</p><figure class="rv"><img src="images/photo-reception-chantier-800.jpg" srcset="images/photo-reception-chantier-420.jpg 400w, images/photo-reception-chantier-800.jpg 800w" sizes="(max-width:720px) 100vw, 780px" alt="Réception d'un chantier par notre équipe" width="800" height="600" loading="lazy" decoding="async"><figcaption>Réception d'un chantier par notre équipe</figcaption></figure><div class="nb"><span class="kk">Étude préalable</span><p>Nos équipes s'engagent à réaliser en amont une étude thermique afin de garantir la transparence et l'objectivité du devis. Celui-ci vous est proposé gratuitement et sans engagement.</p></div><h2>Vos aides financières</h2><p>Les travaux de chauffage peuvent être coûteux. C'est pourquoi nous aidons nos clients à bénéficier des aides gouvernementales disponibles pour changer leur système de chauffage.</p><p>Nous sommes spécialisés dans l'accompagnement des clients pour l'obtention de MaPrimeRénov', aide financière proposée par l'État pour aider les propriétaires à rénover leur logement. Nous guidons nos clients à chaque étape du processus, de la demande d'aide à l'installation du nouveau système de chauffage.</p><p>Certains de nos clients sont suivis par des structures d'accompagnement à la rénovation énergétique. C'est le cas d'un chantier mené à Ollières, réalisé en réponse aux recommandations de SOLIHA.</p><h2>Un exemple de rénovation</h2><p>À Ollières, près de Saint-Maximin-la-Sainte-Baume, nous sommes intervenus pour remplacer le chauffe-eau existant par un modèle plat vertical, poser trois radiateurs électriques à double corps de chauffe et installer un sèche-serviettes dans la salle d'eau. Le chantier a été réalisé en une journée par deux de nos techniciens. <a href="realisation-ollieres-renovation-chauffage-eau-chaude.html">Lire le détail</a>.</p><h2>Après la pose</h2><p>Nous considérons que la maintenance de nos installations est aussi importante que leur pose initiale. Nous restons disponibles pour toute réparation ou dépannage ultérieur. <a href="entretien.html">Voir l'entretien</a> — <a href="depannage.html">voir le dépannage</a>.</p>
+<h2>Ce que nous installons</h2><ul><li>les pompes à chaleur air-eau, avec module ;</li><li>les chaudières gaz à condensation ;</li><li>les systèmes de climatisation ;</li><li>les équipements de production d'eau chaude sanitaire, dont les chauffe-eau électriques ;</li><li>les émetteurs : radiateurs, sèche-serviettes, plancher chauffant.</li></ul><p>Nous travaillons avec les marques les plus fiables et les plus innovantes du marché, telles que Vaillant et Saunier Duval, pour offrir à nos clients des solutions de chauffage performantes et durables.</p><div class="ms2 rv"><figure><span class="fr"><img src="images/photo-reception-chantier-800.jpg" srcset="images/photo-reception-chantier-420.jpg 400w, images/photo-reception-chantier-800.jpg 800w" sizes="(max-width:1020px) 100vw, 46vw" alt="La réception du chantier" width="800" height="600" loading="lazy" decoding="async"></span><figcaption></figcaption></figure><div class="cnt"><h3>La réception du chantier</h3><p>Chaque installation est mise en service et contrôlée avant remise au client. Le technicien vérifie le fonctionnement complet et explique l'usage de l'appareil.</p><ul><li>Mise en service et réglages</li><li>Contrôle du fonctionnement</li><li>Explication de l'usage au client</li></ul></div></div><div class="nb"><span class="kk">Étude préalable</span><p>Nos équipes s'engagent à réaliser en amont une étude thermique afin de garantir la transparence et l'objectivité du devis. Celui-ci vous est proposé gratuitement et sans engagement.</p></div></div></section><section class="sc-tight" style="padding-top:0"><div class="w"><div class="trio rv"><figure><img src="images/20241028-pompe-a-chaleur-vaillant-600.jpg" srcset="images/20241028-pompe-a-chaleur-vaillant-420.jpg 420w, images/20241028-pompe-a-chaleur-vaillant-600.jpg 600w" sizes="(max-width:720px) 100vw, 33vw" alt="Pompe à chaleur Vaillant, 28 octobre 2024" width="600" height="800" loading="lazy" decoding="async"><figcaption><b>Pompe à chaleur Vaillant</b><span>28 octobre 2024</span></figcaption></figure><figure><img src="images/20240514-pompe-a-chaleur-600.jpg" srcset="images/20240514-pompe-a-chaleur-420.jpg 420w, images/20240514-pompe-a-chaleur-600.jpg 600w" sizes="(max-width:720px) 100vw, 33vw" alt="Pompe à chaleur, 14 mai 2024" width="600" height="800" loading="lazy" decoding="async"><figcaption><b>Pompe à chaleur</b><span>14 mai 2024</span></figcaption></figure><figure><img src="images/20231211-chaudiere-gaz-600.jpg" srcset="images/20231211-chaudiere-gaz-420.jpg 420w, images/20231211-chaudiere-gaz-600.jpg 600w" sizes="(max-width:720px) 100vw, 33vw" alt="Chaudière gaz, 11 décembre 2023" width="600" height="800" loading="lazy" decoding="async"><figcaption><b>Chaudière gaz</b><span>11 décembre 2023</span></figcaption></figure></div></div></section><section class="sc" style="padding-top:var(--s8)"><div class="w wn tx"><h2>Vos aides financières</h2><p>Les travaux de chauffage peuvent être coûteux. C'est pourquoi nous aidons nos clients à bénéficier des aides gouvernementales disponibles pour changer leur système de chauffage.</p><p>Nous sommes spécialisés dans l'accompagnement des clients pour l'obtention de MaPrimeRénov', aide financière proposée par l'État pour aider les propriétaires à rénover leur logement. Nous guidons nos clients à chaque étape du processus, de la demande d'aide à l'installation du nouveau système de chauffage.</p><p>Certains de nos clients sont suivis par des structures d'accompagnement à la rénovation énergétique. C'est le cas d'un chantier mené à Ollières, réalisé en réponse aux recommandations de SOLIHA.</p><figure class="mw rv"><span class="fr"><img src="images/69ca5c57-244d-423f-ae9a-0364fee6ad-600.jpg" srcset="images/69ca5c57-244d-423f-ae9a-0364fee6ad-420.jpg 400w, images/69ca5c57-244d-423f-ae9a-0364fee6ad-600.jpg 600w" sizes="(max-width:720px) 100vw, 780px" alt="Sèche-serviettes posé lors de la rénovation" width="600" height="800" loading="lazy" decoding="async"></span><figcaption><b>Sèche-serviettes posé lors de la rénovation</b><span>Ollières</span></figcaption></figure><h2>Un exemple de rénovation</h2><p>À Ollières, près de Saint-Maximin-la-Sainte-Baume, nous sommes intervenus pour remplacer le chauffe-eau existant par un modèle plat vertical, poser trois radiateurs électriques à double corps de chauffe et installer un sèche-serviettes dans la salle d'eau. Le chantier a été réalisé en une journée par deux de nos techniciens. <a href="realisation-ollieres-renovation-chauffage-eau-chaude.html">Lire le détail</a>.</p><figure class="mw rv"><span class="fr"><img src="images/img-1696-600.jpg" srcset="images/img-1696-420.jpg 400w, images/img-1696-600.jpg 600w" sizes="(max-width:720px) 100vw, 780px" alt="Équipements installés lors du même chantier" width="600" height="800" loading="lazy" decoding="async"></span><figcaption><b>Équipements installés lors du même chantier</b><span>Ollières</span></figcaption></figure><h2>Après la pose</h2><p>Nous considérons que la maintenance de nos installations est aussi importante que leur pose initiale. Nous restons disponibles pour toute réparation ou dépannage ultérieur. <a href="entretien.html">Voir l'entretien</a> — <a href="depannage.html">voir le dépannage</a>.</p>
 
 </div></section>
 <section class="sc-dk cta"><div class="w cta-in">
