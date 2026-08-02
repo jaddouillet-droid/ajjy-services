@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -54,7 +54,12 @@ ul,ol{list-style:none}
 b,strong{color:var(--ink);font-weight:600}
 ::selection{background:var(--ink);color:#fff}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.sc-dk :focus-visible,.hero :focus-visible,.ph :focus-visible,.ft :focus-visible,
+.mm :focus-visible,.hdr.over :focus-visible{outline-color:#fff}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.skip{position:absolute;left:var(--s5);top:-200px;z-index:200;background:var(--ink);color:#fff;
+  padding:14px 22px;font-weight:600;font-size:.94rem;transition:top .2s var(--ease)}
+.skip:focus{top:var(--s5)}
 
 .w{max-width:1320px;margin:0 auto;padding:0 var(--s7)}
 .wn{max-width:780px}
@@ -129,7 +134,7 @@ body.lk{overflow:hidden}
 .hero{position:relative;min-height:min(92vh,880px);display:flex;align-items:flex-end;
   background:var(--ink);overflow:hidden}
 .hero-img{position:absolute;inset:0}
-.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.62}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:.62}
 .hero-sc{position:absolute;inset:0;background:
   linear-gradient(to top,rgba(11,11,12,.94) 0%,rgba(11,11,12,.55) 34%,rgba(11,11,12,.28) 62%,rgba(11,11,12,.5) 100%)}
 .hero-in{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;
@@ -175,11 +180,12 @@ body.lk{overflow:hidden}
 .hd1 p{font-size:1.06rem;margin-top:var(--s4)}
 
 /* ---------- galerie : ratios uniformes, aucune déformation ---------- */
-.gal{columns:3;column-gap:var(--s4)}
-.gal.g4{columns:4}
-.gal figure{margin:0 0 var(--s6);break-inside:avoid;-webkit-column-break-inside:avoid}
-.gal .fr{position:relative;overflow:hidden;background:var(--pp-3);display:block}
-.gal .fr img{width:100%;height:auto;display:block;transition:transform 1.1s var(--ease)}
+.gal{display:flex;flex-wrap:wrap;gap:var(--s5) var(--s4)}
+.gal::after{content:'';flex-grow:999999}
+.gal figure{margin:0;flex:var(--r) 1 calc(var(--r) * 215px);min-width:0}
+.gal.g4 figure{flex-basis:calc(var(--r) * 185px)}
+.gal .fr{position:relative;overflow:hidden;background:var(--pp-3);display:block;aspect-ratio:var(--r)}
+.gal .fr img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease)}
 .gal figure:hover .fr img{transform:scale(1.045)}
 .gal figcaption{padding-top:var(--s3);display:flex;justify-content:space-between;gap:var(--s4);
   align-items:baseline;border-top:1px solid var(--ln);margin-top:var(--s3)}
@@ -334,6 +340,7 @@ body.lk{overflow:hidden}
 
 /* apparition au défilement */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.no-js .rv{opacity:1;transform:none}
 .rv.in{opacity:1;transform:none}
 
 /* ---------- responsive ---------- */
@@ -352,7 +359,8 @@ body.lk{overflow:hidden}
   .ix a{grid-template-columns:48px minmax(0,1fr);gap:0 var(--s5)}
   .ix .cl{grid-template-columns:1fr;gap:var(--s4)}
   .ix .side{padding-top:var(--s4);border-top:1px solid var(--ln)}
-  .gal.g4{columns:3}
+  .gal figure{flex-basis:calc(var(--r) * 175px)}
+  .gal.g4 figure{flex-basis:calc(var(--r) * 160px)}
   .cta-in{grid-template-columns:1fr;gap:var(--s6)}
   .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
   .ft-g{grid-template-columns:1fr 1fr;gap:var(--s6)}
@@ -375,8 +383,8 @@ body.lk{overflow:hidden}
   .ph{padding:calc(68px + var(--s7)) 0 var(--s7)}
   .ph-ac{flex-direction:column}
   .ph-ac .bt{width:100%}
-  .gal,.gal.g4{columns:2;column-gap:var(--s3)}
-  .gal figure{margin-bottom:var(--s5)}
+  .gal{gap:var(--s4) var(--s3)}
+  .gal figure,.gal.g4 figure{flex-basis:calc(var(--r) * 118px)}
   .duo{grid-template-columns:1fr;gap:var(--s6)}
   .gal figcaption{flex-direction:column;gap:2px}
   .fig{grid-template-columns:1fr 1fr;gap:var(--s5)}
@@ -390,8 +398,21 @@ body.lk{overflow:hidden}
   .dt td:first-child{width:44%}
 }
 @media(max-width:420px){
-  .gal,.gal.g4{columns:1}
+  .gal figure,.gal.g4 figure{flex-basis:100%;flex-grow:1}
   .fig{grid-template-columns:1fr}
+}
+@media print{
+  .hdr,.mm,.skip,.fm,.cta .fm,.ft-g,.gal .fr,.trio,.hero-img,.hero-sc,.ph-bg{display:none!important}
+  body{font-size:11pt;color:#000;background:#fff}
+  .hero,.ph,.sc-dk,.ft{background:#fff!important;color:#000!important}
+  .hero h1,.ph h1,.sc-dk h2,.sc-dk h3,.ft h4{color:#000!important}
+  .hero .ld,.ph p,.sc-dk p{color:#333!important}
+  .sc,.cta{padding:12pt 0}
+  a{color:#000;text-decoration:underline}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:8pt;color:#555}
+  a[href^="tel:"]::after,a[href^="#"]::after{content:""}
+  .ix a,figure,table,.qt,.nb{break-inside:avoid}
+  h2,h3{break-after:avoid}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
@@ -430,10 +451,18 @@ body.lk{overflow:hidden}
 .trio figure{margin:0;position:relative;overflow:hidden;background:var(--pp-3);aspect-ratio:1/1}
 .trio img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .trio figure:hover img{transform:scale(1.05)}
-.trio figcaption{position:absolute;left:0;right:0;bottom:0;padding:var(--s4);
-  background:linear-gradient(to top,rgba(11,11,12,.88),transparent);color:#fff;font-size:.84rem}
-.trio figcaption b{display:block;font-weight:600;font-size:.94rem;margin-bottom:2px}
-.trio figcaption span{color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums}
+.trio figcaption{position:absolute;left:0;right:0;bottom:0;padding:var(--s6) var(--s5) var(--s5);
+  color:#fff;font-size:.84rem;pointer-events:none;
+  background:linear-gradient(to top,
+    rgba(11,11,12,.94) 0%,
+    rgba(11,11,12,.86) 26%,
+    rgba(11,11,12,.62) 52%,
+    rgba(11,11,12,.28) 76%,
+    rgba(11,11,12,0) 100%)}
+.trio figcaption b{display:block;font-weight:600;font-size:.98rem;margin-bottom:3px;
+  letter-spacing:-.012em;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.trio figcaption span{color:rgba(255,255,255,.82);font-variant-numeric:tabular-nums;
+  text-shadow:0 1px 10px rgba(0,0,0,.5)}
 
 @media(max-width:1020px){
   .ms2{grid-template-columns:1fr;gap:var(--s6)}
@@ -447,6 +476,7 @@ body.lk{overflow:hidden}
 </style>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="hdr solid" id="hdr" data-over="0"><div class="hdr-in">
 <a href="index.html" class="bd" aria-label="AJJY Services, accueil"><b>AJJY Services</b><span>Maintenance — AJJY Concept</span></a>
 <nav class="nv" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="chantiers.html">Chantiers</a><a href="entretien.html">Entretien</a><a href="depannage.html">Dépannage</a><a href="installation.html">Installation</a><a href="entreprise.html">Entreprise</a><a href="contact.html" class="on" aria-current="page">Contact</a></nav>
@@ -461,11 +491,11 @@ body.lk{overflow:hidden}
   <div class="mm-top"><span class="bd"><b>AJJY Services</b><span>Maintenance</span></span>
   <button class="mm-x" id="mx" aria-label="Fermer le menu">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
-  <a class="ml" href="index.html">Accueil</a><a class="ml" href="chantiers.html">Chantiers</a><a class="ml" href="entretien.html">Entretien</a><a class="ml" href="depannage.html">Dépannage</a><a class="ml" href="installation.html">Installation</a><a class="ml" href="entreprise.html">Entreprise</a><a class="ml" href="contact.html">Contact</a>
+  <a class="ml" href="index.html">Accueil</a><a class="ml" href="chantiers.html">Chantiers</a><a class="ml" href="entretien.html">Entretien</a><a class="ml" href="depannage.html">Dépannage</a><a class="ml" href="installation.html">Installation</a><a class="ml" href="entreprise.html">Entreprise</a><a class="ml" href="contact.html" aria-current="page">Contact</a>
   <div class="mm-ft"><a class="tl" href="tel:0484891586">04 84 89 15 86</a>
   <a class="bt bt-lt bt-lg bt-fw" href="contact.html">Demander un devis</a></div>
 </div>
-<main>
+<main id="contenu">
 
 <section class="ph"><div class="w">
 <nav class="bcr" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a> <span aria-hidden="true">/</span> Contact</nav>
@@ -544,6 +574,7 @@ body.lk{overflow:hidden}
 <span>Entreprise qualifiée RGE · Vaillant &amp; Saunier Duval</span></div>
 </div></footer>
 
+<script>document.documentElement.classList.remove('no-js');</script>
 <script>
 (function(){
  var h=document.getElementById('hdr'),over=h&&h.dataset.over==='1',t=false;

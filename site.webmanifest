@@ -1,0 +1,17 @@
+{
+  "name": "AJJY Services",
+  "short_name": "AJJY",
+  "description": "Entretien, dépannage et installation d'équipements de chauffage dans les Bouches-du-Rhône.",
+  "start_url": "/",
+  "display": "standalone",
+  "lang": "fr-FR",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0B0B0C",
+  "icons": [
+    {
+      "src": "images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
